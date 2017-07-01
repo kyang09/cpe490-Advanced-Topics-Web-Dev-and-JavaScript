@@ -1,0 +1,15 @@
+/* Kevin Yang
+ * CSC490 Web Intro
+ * Expander Lab - .css file
+ * kyang09@calpoly.edu
+ */
+
+ .roots{
+ 	border: 2px blue solid;
+ }
+
+ .sub{
+ 	background-color: lightgreen;
+ 	width: 300px;
+ 	height:22px;
+ }

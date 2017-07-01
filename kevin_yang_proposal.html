@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+	<title>Div Rain Drops</title>
+	<style type="text/css">
+		#overview{
+			border: 2px darkblue double;
+			padding: 35px;
+			width:50%;
+			margin: 0 auto;
+		}
+		#rest{
+			border: 2px darkblue double;
+			padding: 35px;
+			width:50%;
+			margin: 0 auto;
+		}
+		#uri{
+			border: 2px darkblue double;
+			padding: 35px;
+			width:50%;
+			margin: 0 auto;
+		}
+		#mockup{
+			border: 2px darkblue double;
+			padding: 35px;
+			width:50%;
+			height:500px;
+			margin: 0 auto;
+		}
+		#mockup img{
+			display: block;
+			margin: 0 auto;
+		}
+
+		#mockup .meter{
+			width:20px;
+			height:200px;
+			float: right;
+			border: 2px black solid;
+			z-index: 3;
+		}
+
+		#mockup .floor{
+			background-color: brown;
+			width:100%;
+			height:10px;
+			margin-top: 480px;
+			z-index: 2;
+
+		}
+		#usecases{
+			border: 2px darkblue double;
+			padding: 35px;
+			width:50%;
+			margin: 0 auto;
+		}
+
+		.rain{
+			position: absolute;
+			background-color: lightblue;
+			width:15px;
+			height:15px;
+			margin-top:-100px;
+			z-index: 1;
+		}
+	</style>
+	<script type="text/javascript" src="jquery-1.8.3.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script> -->
+ <script type="text/javascript">
+ 	$(document).ready(function(){
+ 		$("#mockup").height
+ 		var container = $("#mockup");
+ 		var animateRain = function(raindrop, ylim){
+ 			if(raindrop.position().top != ylim){
+ 				raindrop.animate({ "margin-top": "+=50px" }, "slow" );
+ 			}
+ 		}
+ 		var createRain = function(bounds, count){
+ 			for(var i = 0; i < count; i++){
+ 				var maxX = bounds.width();
+ 				var maxY = bounds.height();
+ 				bounds.append('<div class="rain" style="margin-top:0;margin-left:'+
+ 					Math.floor((Math.random() * maxX) + 1)+'px;margin-right:'+
+ 					Math.floor((Math.random() * maxY) + 1)+'px"></div>');
+ 				animateRain(bounds.children(".rain"), bounds.height() - 100);
+ 			}
+	}
+ 		createRain(container, 10);
+ 		container.append('<div class="meter"></div><div class="floor"></div>');
+ 	});
+ </script>
+</head>
+<body>
+<h1 align="center">Div Rain Drops</h1>
+<div id="overview">
+	<h2>Overview</h2>
+	<p>&#60;div&#62; boxes can become quite boring at times.<br />
+		But... what if we apply some simple art to it? <br /><br />
+		We will grow some &#60;div&#62; plants using &#60;div&#62; rain drops!<br />
+		Enter a name, and click the Start button to send a POST request to create an player.<br /> Each player table entry will consist of a username, current reservoir, and how many times the reservoir was filled.<br /><br />
+
+		While a rain drop is falling, clicking on it will save it to a bucket (shown as a jQueryUI progress bar, 0 to 100) using PUT.<br />
+		We use GET while viewing a jQueryUI Dialog box to see other player stats<br />
+		Once the progress bar is full, we also use PUT on a button to reset the bar so we can fill more rain water.<br />
+		If you miss a rain drop, it drops to the bottom of the browser window and grows the plants a few pixels at a time.<br /><br />
+		jQuery has a function called .animate() which allows easy CSS animations.<br />
+		We can use .animate() to animate rain drops.
+		<br /> We can use .css() to grow the &#60;div&#62; plants.<br />
+		We will use jQueryUI Tooltip to tell the player what is what.<br /><br />
+		The point of this game is to not let the &#60;div&#62; plants from reaching the top of your browser!<br />This is a perfect game in the spirit of California's drought situation.
+	</p>
+</div>
+<div id="rest">
+	<h2>REST Interface</h2>
+	<p>POST - Creates player and initilizes reservoir and number of full reservoirs to 0.<br />
+
+	PUT - Add to reservoir and number of full reservoirs (AKA level of the player).<br />
+
+	GET - Retrieve other player stats (name, reservoir, level)
+	<br /><br />
+	Heroku can be used to make this application.<br /><br />
+	<a href="https://api-docs.heroku.com/">Heroku Docs</a>
+</p>
+</div>
+<div id="uri">
+	<h2>URI</h2>
+	<p>
+	/stats - Stats of players<br />
+
+	/reserve - current and overall reservoir.<br />
+	</p>
+</div>
+<div id="mockup">
+	<h2 align="center">Mock Up</h2>
+ <img style="position:absolute; z-index:-1"src="rain.png" width="300" height="200">
+</div>
+<div id="usecases">
+	<h2>Use Cases</h2>
+<p><h3>Collect Rain Drops</h3><br />
+	A user clicks on a falling rain drop to collect it and store it. His/her progress bar goes up. Once the progress bar is full, a button appears to dump the rain water into a reservoir. The player levels up by one. 
+</p>
+<p><h3>Collect More Rain Drops</h3><br />
+	After a user successfully dumps one bucket of rain water to the reservoir, their bucket should reset from 100 to 0. Clicking on more rain drops should add to the bucket, raising the progress bar.
+</p>
+<p><h3>Fail to Collect Rain Drops</h3><br />
+	A user has very bad hand-eye coordination and cannot click on any rain drops. The result is the plants on the ground overgrowing to the top of the browser. This user lost precious water, and ultimately failed.
+</p>
+</div>
+</body>
+</html>

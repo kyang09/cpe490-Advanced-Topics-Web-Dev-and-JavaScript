@@ -1,0 +1,49 @@
+/* Kevin Yang
+ * kyang09@calpoly.edu
+ * CSC490 WebAdv Expander.css
+ */
+.container{
+   width: auto;
+   height: auto;
+}
+
+.root{
+   border: 2px blue solid;
+}
+
+.root .up{
+   float: left;
+   width:25px;
+   height: 25px;
+   background: url("up.png") no-repeat;
+   background-size: cover;
+}
+
+.root .down{
+   float: left;
+   width:25px;
+   height: 25px;
+   background: url("down.png") no-repeat;
+   background-size: cover;
+}
+
+.pink{
+   background-color: #FFC7C7 !important;
+}
+
+.gap{
+   margin-left: 17px;
+}
+
+.big{
+   margin-left: 25px;
+}
+
+.banner {
+   display: inline-block;
+   margin: 2px;
+   width: 350px;
+   height: 25px;
+   background-color: #BAFFB7;
+   clear:both;
+}

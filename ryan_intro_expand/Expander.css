@@ -1,0 +1,41 @@
+/* Kevin Yang
+ * kyang09@calpoly.edu
+ * CSC490 WebIntro Expander.css
+ */
+
+.root{
+   border: 2px blue solid;
+   margin: 2px;
+   overflow: auto;
+}
+
+.topic{
+   margin: 2px;
+   width: 350px;
+   height: 25px;
+   float: left;
+   background-color:#BAFFB7;
+}
+.content{
+   clear: both;
+   margin-left: 17px;
+}
+
+.up{
+   display: block;
+   float: left;
+   clear: both;
+}
+
+.down{
+   display: block;
+   float: left;
+}
+
+.pink{
+   background-color: #FFC7C7;
+}
+
+.hideText{
+   display: none;
+}
